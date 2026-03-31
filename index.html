@@ -160,22 +160,6 @@
       pointer-events: none;
     }
 
-    .hero-badge {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.5rem;
-      padding: 0.5rem 1.25rem;
-      background: var(--color-accent-soft);
-      border: 1px solid rgba(196, 163, 90, 0.2);
-      border-radius: 100px;
-      font-size: 0.8rem;
-      color: var(--color-accent);
-      font-weight: 500;
-      margin-bottom: 2.5rem;
-      letter-spacing: 0.03em;
-      text-transform: uppercase;
-    }
-
     .hero h1 {
       font-family: var(--font-serif);
       font-size: clamp(2.5rem, 6vw, 4.5rem);
@@ -528,8 +512,69 @@
       color: var(--color-text-secondary);
     }
 
+    /* ---- HAMBURGER ---- */
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 8px;
+      z-index: 200;
+    }
+
+    .hamburger span {
+      display: block;
+      width: 24px;
+      height: 2px;
+      background: var(--color-text);
+      border-radius: 2px;
+      transition: transform 0.3s, opacity 0.3s;
+    }
+
+    .hamburger.active span:nth-child(1) {
+      transform: translateY(7px) rotate(45deg);
+    }
+
+    .hamburger.active span:nth-child(2) {
+      opacity: 0;
+    }
+
+    .hamburger.active span:nth-child(3) {
+      transform: translateY(-7px) rotate(-45deg);
+    }
+
     /* ---- RESPONSIVE ---- */
     @media (max-width: 768px) {
+      .hamburger {
+        display: flex;
+      }
+
+      .nav-links {
+        display: none;
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: rgba(10, 10, 11, 0.97);
+        backdrop-filter: blur(20px);
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: 2.5rem;
+        z-index: 150;
+      }
+
+      .nav-links.open {
+        display: flex;
+      }
+
+      .nav-links a {
+        font-size: 1.25rem;
+      }
+
       .hero {
         padding: 9rem 0 5rem;
       }
@@ -544,10 +589,6 @@
 
       .thinkers-grid {
         gap: 2rem;
-      }
-
-      .nav-links {
-        display: none;
       }
 
       .email-form {
@@ -589,21 +630,25 @@
   <nav id="nav">
     <div class="container">
       <a href="#" class="logo">Thinkerton<span>.</span></a>
-      <ul class="nav-links">
+      <ul class="nav-links" id="nav-menu">
         <li><a href="#how">How It Works</a></li>
         <li><a href="#modes">Modes</a></li>
         <li><a href="#demo">Demo</a></li>
         <li><a href="#waitlist" class="btn btn-primary">Join Waitlist</a></li>
       </ul>
+      <button class="hamburger" id="hamburger" aria-label="Toggle menu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
     </div>
   </nav>
 
   <!-- HERO -->
   <section class="hero">
     <div class="container">
-      <div class="hero-badge fade-up">Decision Intelligence Engine</div>
-      <h1 class="fade-up">Don't just think.<br>Think like the <em>greatest minds.</em></h1>
-      <p class="fade-up">Feed Thinkerton a problem and get it analyzed through the mental models of Munger, Singleton, Kahneman, and other elite thinkers — not generic AI, but curated reasoning from history's sharpest minds.</p>
+      <h1 class="fade-up">Curated reasoning from history's <em>sharpest minds.</em></h1>
+      <p class="fade-up">Feed Thinkerton a problem and get it analyzed through the mental models of Munger, Singleton, Kahneman, and other elite thinkers — not generic AI, but the actual decision frameworks of the greatest thinkers who ever lived.</p>
       <div class="hero-ctas fade-up">
         <a href="#waitlist" class="btn btn-primary">Get Early Access</a>
         <a href="#how" class="btn btn-secondary">See How It Works</a>
@@ -755,6 +800,20 @@
     const nav = document.getElementById('nav');
     window.addEventListener('scroll', () => {
       nav.classList.toggle('scrolled', window.scrollY > 20);
+    });
+
+    // Hamburger menu
+    const hamburger = document.getElementById('hamburger');
+    const navMenu = document.getElementById('nav-menu');
+    hamburger.addEventListener('click', () => {
+      hamburger.classList.toggle('active');
+      navMenu.classList.toggle('open');
+    });
+    navMenu.querySelectorAll('a').forEach(link => {
+      link.addEventListener('click', () => {
+        hamburger.classList.remove('active');
+        navMenu.classList.remove('open');
+      });
     });
 
     // Demo video play/pause
