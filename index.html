@@ -379,6 +379,7 @@
     .demo-container {
       max-width: 720px;
       margin: 3rem auto 0;
+      position: relative;
     }
 
     .demo-window {
@@ -403,70 +404,17 @@
       background: var(--color-border);
     }
 
-    .demo-body {
-      padding: 2.5rem;
+    #play-btn {
+      transition: opacity 0.3s, transform 0.2s, box-shadow 0.2s;
     }
 
-    .demo-prompt {
-      font-size: 0.9rem;
-      color: var(--color-text-muted);
-      margin-bottom: 0.75rem;
-      font-weight: 500;
+    #play-btn:hover {
+      transform: translate(-50%, -50%) scale(1.08);
+      box-shadow: 0 6px 40px rgba(196,163,90,0.4);
     }
 
-    .demo-input {
-      font-size: 1rem;
-      color: var(--color-text);
-      margin-bottom: 2.5rem;
-      padding-bottom: 2rem;
-      border-bottom: 1px solid var(--color-border);
-      line-height: 1.7;
-    }
-
-    .demo-response {
-      margin-top: 0;
-    }
-
-    .demo-thinker-tag {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.375rem;
-      padding: 0.375rem 0.875rem;
-      background: var(--color-accent-soft);
-      border-radius: 6px;
-      font-size: 0.8rem;
-      color: var(--color-accent);
-      font-weight: 500;
-      margin-bottom: 1.25rem;
-    }
-
-    .demo-model-label {
-      font-size: 0.75rem;
-      color: var(--color-text-muted);
-      text-transform: uppercase;
-      letter-spacing: 0.1em;
-      margin-bottom: 0.5rem;
-      font-weight: 500;
-    }
-
-    .demo-model-name {
-      font-family: var(--font-serif);
-      font-size: 1rem;
-      font-weight: 500;
-      color: var(--color-text);
-      margin-bottom: 0.75rem;
-    }
-
-    .demo-reasoning {
-      font-size: 0.9rem;
-      color: var(--color-text-secondary);
-      line-height: 1.8;
-      font-weight: 300;
-    }
-
-    .demo-reasoning strong {
-      color: var(--color-text);
-      font-weight: 500;
+    #demo-video {
+      cursor: pointer;
     }
 
     /* ---- CTA SECTION ---- */
@@ -735,33 +683,42 @@
     </div>
   </section>
 
-  <!-- DEMO -->
+  <!-- DEMO VIDEO -->
   <section class="demo" id="demo">
     <div class="container">
       <p class="section-label" style="text-align:center">Live Preview</p>
       <h2 class="section-title" style="text-align:center">See the reasoning in action.</h2>
       <div class="demo-container">
-        <div class="demo-window">
-          <div class="demo-toolbar">
-            <div class="demo-dot"></div>
-            <div class="demo-dot"></div>
-            <div class="demo-dot"></div>
-          </div>
-          <div class="demo-body">
-            <div class="demo-prompt">YOUR PROBLEM</div>
-            <div class="demo-input">"We have $2M in free cash flow. Should we reinvest in product development, acquire a smaller competitor, or return capital to shareholders?"</div>
-            <div class="demo-response">
-              <div class="demo-thinker-tag">&#9670; Think Like: Henry Singleton</div>
-              <div class="demo-model-label">Mental Model</div>
-              <div class="demo-model-name">Opportunistic Capital Allocation</div>
-              <div class="demo-reasoning">
-                <strong>Framework:</strong> Singleton never committed to a fixed allocation strategy. He evaluated each option against the current opportunity cost of capital.<br><br>
-                <strong>Applied to your situation:</strong> The critical question isn't "which category" but "which specific opportunity has the highest risk-adjusted return right now?" Singleton would evaluate: Is your stock undervalued? (If so, buy it back.) Is the acquisition target priced below intrinsic value? (If so, acquire.) Is the product ROI higher than both? (If so, reinvest.)<br><br>
-                <strong>Historical precedent:</strong> At Teledyne, Singleton shifted between aggressive buybacks (repurchasing 90% of shares when cheap) and acquisitions (130+ deals when multiples were favorable) — never dogmatic, always opportunistic.<br><br>
-                <strong>Key insight:</strong> <em>The answer changes based on market conditions. Avoid the trap of treating capital allocation as a permanent policy.</em>
-              </div>
-            </div>
-          </div>
+        <div class="demo-window" style="padding:0; overflow:hidden;">
+          <video
+            id="demo-video"
+            src="demo.mp4"
+            muted
+            playsinline
+            loop
+            style="width:100%; display:block; border-radius:16px;"
+          ></video>
+          <button id="play-btn" aria-label="Play demo video" style="
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 72px;
+            height: 72px;
+            border-radius: 50%;
+            background: rgba(196,163,90,0.9);
+            border: none;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: transform 0.2s, box-shadow 0.2s;
+            box-shadow: 0 4px 30px rgba(196,163,90,0.3);
+          ">
+            <svg width="24" height="28" viewBox="0 0 24 28" fill="none">
+              <path d="M2 2L22 14L2 26V2Z" fill="#0a0a0b" stroke="#0a0a0b" stroke-width="2" stroke-linejoin="round"/>
+            </svg>
+          </button>
         </div>
       </div>
     </div>
@@ -798,6 +755,40 @@
     const nav = document.getElementById('nav');
     window.addEventListener('scroll', () => {
       nav.classList.toggle('scrolled', window.scrollY > 20);
+    });
+
+    // Demo video play/pause
+    const video = document.getElementById('demo-video');
+    const playBtn = document.getElementById('play-btn');
+
+    // Auto-play when scrolled into view
+    const videoObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          video.play();
+          playBtn.style.opacity = '0';
+          playBtn.style.pointerEvents = 'none';
+        }
+      });
+    }, { threshold: 0.5 });
+    videoObserver.observe(video);
+
+    playBtn.addEventListener('click', () => {
+      video.play();
+      playBtn.style.opacity = '0';
+      playBtn.style.pointerEvents = 'none';
+    });
+
+    video.addEventListener('click', () => {
+      if (video.paused) {
+        video.play();
+        playBtn.style.opacity = '0';
+        playBtn.style.pointerEvents = 'none';
+      } else {
+        video.pause();
+        playBtn.style.opacity = '1';
+        playBtn.style.pointerEvents = 'auto';
+      }
     });
 
     // Waitlist form

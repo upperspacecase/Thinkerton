@@ -1,0 +1,25 @@
+{
+  "name": "demo",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "studio": "remotion studio src/index.ts",
+    "render": "remotion render src/index.ts ThinkertonDemo ../demo.mp4",
+    "build": "npx ts-node src/render.ts"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@remotion/bundler": "^4.0.442",
+    "@remotion/cli": "^4.0.442",
+    "@remotion/player": "^4.0.442",
+    "@remotion/renderer": "^4.0.442",
+    "@types/react": "^19.2.14",
+    "react": "^19.2.4",
+    "react-dom": "^19.2.4",
+    "remotion": "^4.0.442",
+    "typescript": "^6.0.2"
+  }
+}
