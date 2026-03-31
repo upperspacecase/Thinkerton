@@ -401,6 +401,106 @@
       cursor: pointer;
     }
 
+    /* ---- PRICING ---- */
+    .pricing {
+      padding: 8rem 0;
+    }
+
+    .pricing-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2rem;
+      margin-top: 4rem;
+      align-items: start;
+    }
+
+    .pricing-card {
+      padding: 3rem 2.5rem;
+      background: var(--color-surface);
+      border: 1px solid var(--color-border);
+      border-radius: 16px;
+      position: relative;
+      transition: border-color 0.3s, transform 0.3s;
+    }
+
+    .pricing-card:hover {
+      transform: translateY(-2px);
+    }
+
+    .pricing-card.featured {
+      border-color: var(--color-accent);
+      box-shadow: 0 0 60px rgba(196, 163, 90, 0.08);
+    }
+
+    .pricing-badge {
+      position: absolute;
+      top: -12px;
+      left: 50%;
+      transform: translateX(-50%);
+      padding: 0.375rem 1rem;
+      background: var(--color-accent);
+      color: var(--color-bg);
+      font-size: 0.7rem;
+      font-weight: 600;
+      border-radius: 100px;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      white-space: nowrap;
+    }
+
+    .pricing-tier {
+      font-family: var(--font-serif);
+      font-size: 1.25rem;
+      font-weight: 700;
+      margin-bottom: 1rem;
+    }
+
+    .pricing-price {
+      font-size: 3rem;
+      font-weight: 700;
+      letter-spacing: -0.03em;
+      line-height: 1;
+      margin-bottom: 0.25rem;
+    }
+
+    .pricing-price span {
+      font-size: 1rem;
+      font-weight: 400;
+      color: var(--color-text-muted);
+    }
+
+    .pricing-annual {
+      font-size: 0.8rem;
+      color: var(--color-text-muted);
+      margin-bottom: 2rem;
+    }
+
+    .pricing-features {
+      list-style: none;
+      margin-bottom: 2.5rem;
+    }
+
+    .pricing-features li {
+      font-size: 0.9rem;
+      color: var(--color-text-secondary);
+      padding: 0.5rem 0;
+      border-bottom: 1px solid var(--color-border);
+      font-weight: 300;
+    }
+
+    .pricing-features li:last-child {
+      border-bottom: none;
+    }
+
+    @media (max-width: 768px) {
+      .pricing-grid {
+        grid-template-columns: 1fr;
+        max-width: 400px;
+        margin-left: auto;
+        margin-right: auto;
+      }
+    }
+
     /* ---- CTA SECTION ---- */
     .cta-section {
       padding: 8rem 0;
@@ -634,6 +734,7 @@
         <li><a href="#how">How It Works</a></li>
         <li><a href="#modes">Modes</a></li>
         <li><a href="#demo">Demo</a></li>
+        <li><a href="#pricing">Pricing</a></li>
         <li><a href="#waitlist" class="btn btn-primary">Join Waitlist</a></li>
       </ul>
       <button class="hamburger" id="hamburger" aria-label="Toggle menu">
@@ -764,6 +865,60 @@
               <path d="M2 2L22 14L2 26V2Z" fill="#0a0a0b" stroke="#0a0a0b" stroke-width="2" stroke-linejoin="round"/>
             </svg>
           </button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PRICING -->
+  <section class="pricing" id="pricing">
+    <div class="container">
+      <p class="section-label" style="text-align:center">Pricing</p>
+      <h2 class="section-title" style="text-align:center">Invest in how you think.</h2>
+      <p class="section-subtitle" style="text-align:center; margin-left:auto; margin-right:auto;">The cost of one bad decision dwarfs a year of Thinkerton. Price anchored against executive coaching ($500–1,000/hr), not AI chatbots.</p>
+      <div class="pricing-grid">
+        <div class="pricing-card">
+          <div class="pricing-tier">Operator</div>
+          <div class="pricing-price">$199<span>/mo</span></div>
+          <div class="pricing-annual">$1,990/year (save 17%)</div>
+          <ul class="pricing-features">
+            <li>30 deep analyses per month</li>
+            <li>All thinkers and mental models</li>
+            <li>"Think Like" mode</li>
+            <li>Full reasoning chains</li>
+            <li>Personal decision journal</li>
+            <li>Export to PDF / Notion</li>
+          </ul>
+          <a href="#waitlist" class="btn btn-secondary" style="width:100%; justify-content:center;">Get Early Access</a>
+        </div>
+        <div class="pricing-card featured">
+          <div class="pricing-badge">Most Popular</div>
+          <div class="pricing-tier">Principal</div>
+          <div class="pricing-price">$499<span>/mo</span></div>
+          <div class="pricing-annual">$4,990/year (save 17%)</div>
+          <ul class="pricing-features">
+            <li>Unlimited analyses</li>
+            <li>Multi-lens comparison (side-by-side)</li>
+            <li>Adversarial review mode</li>
+            <li>Decision pattern tracking</li>
+            <li>API access (100 calls/mo)</li>
+            <li>Custom thinker profiles</li>
+          </ul>
+          <a href="#waitlist" class="btn btn-primary" style="width:100%; justify-content:center;">Get Early Access</a>
+        </div>
+        <div class="pricing-card">
+          <div class="pricing-tier">Partnership</div>
+          <div class="pricing-price">$2,500<span>/mo</span></div>
+          <div class="pricing-annual">Custom annual agreements</div>
+          <ul class="pricing-features">
+            <li>Team accounts (up to 10 seats)</li>
+            <li>Shared decision journals</li>
+            <li>Custom knowledge base</li>
+            <li>Dedicated onboarding</li>
+            <li>Quarterly framework updates</li>
+            <li>White-glove support</li>
+          </ul>
+          <a href="#waitlist" class="btn btn-secondary" style="width:100%; justify-content:center;">Contact Us</a>
         </div>
       </div>
     </div>
