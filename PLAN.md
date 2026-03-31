@@ -231,20 +231,59 @@ This is a content + structure moat, similar to how Bloomberg's value isn't in th
 
 ### Tier 1 — Freely Available Primary Sources (Gold)
 
-These are public, high-signal, and legally clean. Start here.
+These are public, high-signal, and legally clean. Start here. **Estimated Tier 1 corpus: ~1.4M words of directly embeddable text.**
 
-| Thinker | Free Sources |
-|---------|-------------|
-| **Warren Buffett** | Berkshire Hathaway annual shareholder letters (1977–present), all free on berkshirehathaway.com. ~50 years of capital allocation reasoning. Also: annual meeting transcripts (many transcribed by fans), CNBC interview archive. |
-| **Charlie Munger** | "The Psychology of Human Misjudgment" speech (full transcript widely available), Wesco Financial shareholder letters, Daily Journal annual meeting transcripts, USC Law School commencement speech, multiple Berkshire meeting Q&A transcripts. |
-| **Henry Singleton** | Teledyne annual reports (available through SEC EDGAR for later years). The primary structured source is *The Outsiders* by William Thorndike (Chapter 1) — you'd paraphrase, not quote. |
-| **Daniel Kahneman** | Nobel Prize lecture (free on nobelprize.org), multiple academic papers on JSTOR/Google Scholar (many open access), TED talks (transcripts available), long-form interviews with Tyler Cowen, Tim Ferriss, etc. |
-| **Richard Feynman** | Caltech commencement address "Cargo Cult Science" (public), *The Character of Physical Law* lectures (transcripts), multiple published lecture transcripts, interviews, "Surely You're Joking" anecdotes widely discussed. |
-| **Claude Shannon** | "A Mathematical Theory of Communication" (original paper, public domain at this point), Bell Labs papers, MIT lecture transcripts, multiple published interviews. |
-| **Andy Grove** | Intel annual letters, "Only the Paranoid Survive" framework widely discussed, Stanford GSB lectures, multiple published interviews. |
-| **Nassim Taleb** | Extensive public writing on fooledbyrandness.com / Medium, academic papers (freely available), YouTube lectures, Twitter/X threads (massive corpus of reasoning in public). |
-| **Ray Dalio** | "Principles" — many core principles published free on principles.com before the book, LinkedIn articles, multiple TED/conference talks, Bridgewater "Daily Observations" excerpts. |
-| **Peter Thiel** | Stanford CS183 lecture notes (published as "Zero to One" but original notes are public), multiple long-form interviews, debate transcripts. |
+#### Warren Buffett (Best-documented thinker on the list)
+- **Shareholder letters (1965–2025):** All free at berkshirehathaway.com/letters/letters.html. 60 years of unfiltered reasoning. Single compiled PDF at nickvitucci.com.
+- **Annual meeting Q&A transcripts (1994–2025):** CNBC Warren Buffett Archive at buffett.cnbc.com/annual-meetings (video + transcripts). Recent transcripts at steadycompounding.com.
+- **Key frameworks:** Circle of competence, margin of safety, economic moats, Mr. Market, opportunity cost thinking.
+
+#### Charlie Munger
+- **"The Psychology of Human Misjudgment" (1995, revised 2005):** Full transcript at github.com/remidinishanth/awesome-charlie-munger and sloww.co. His most important speech — 25 cognitive biases systematically cataloged.
+- **"A Lesson on Elementary, Worldly Wisdom" (USC, 1994):** The foundational mental models speech. Same GitHub repo.
+- **Daily Journal annual meeting transcripts (2015–2022):** Various investor sites.
+- **Key frameworks:** Latticework of mental models, inversion, lollapalooza effects, checklist approach, 25 biases.
+
+#### Henry Singleton (Scarcest primary sources on the list)
+- **Teledyne shareholder letters:** Compilation at tyastunggal.com/p/teledyne-shareholder-letters-by-henry. Annotated letters at aletteraday.substack.com.
+- **CSInvesting case study PDF:** Free at csinvesting.org/wp-content/uploads/2015/05/Dr.-Singleton-and-Teledyne-A-Study-of-an-Excellent-Capital-Allocator.pdf
+- **Thorndike SSRN paper:** "An Unconventional Conglomerateur" at papers.ssrn.com/sol3/papers.cfm?abstract_id=2542675
+- **Key frameworks:** Opportunistic capital allocation, share issuance/buyback timing, decentralized ops + centralized capital.
+
+#### Daniel Kahneman
+- **Nobel lecture "Maps of Bounded Rationality" (2002):** PDF at nobelprize.org/uploads/2018/06/kahnemann-lecture.pdf + 38-min video.
+- **"Prospect Theory" paper (1979):** Free at web.mit.edu/curhan/www/docs/Articles/15341_Readings/Behavioral_Decision_Theory/Kahneman_Tversky_1979_Prospect_theory.pdf
+- **"Advances in Prospect Theory" (1992):** Free at psych.fullerton.edu/mbirnbaum/psych466/articles/Tversky_Kahneman_JRU_92.pdf
+- **Princeton scholar page:** kahneman.scholar.princeton.edu/lectures
+- **Key frameworks:** System 1/2, prospect theory, anchoring, availability heuristic, planning fallacy, premortem technique.
+
+#### Richard Feynman
+- **Feynman Lectures on Physics (all 3 volumes):** Free to read at feynmanlectures.caltech.edu. Audio recordings also available.
+- **Nobel lecture (1965):** Free at nobelprize.org/prizes/physics/1965/feynman/lecture/
+- **"Cargo Cult Science" (1974 Caltech commencement):** Widely available online.
+- **Key frameworks:** First-principles thinking, Feynman Technique, intellectual honesty, multiple representations.
+
+#### Claude Shannon
+- **"A Mathematical Theory of Communication" (1948):** Free from people.math.harvard.edu/~ctm/home/text/others/shannon/entropy/entropy.pdf
+- **"Creative Thinking" speech (1952):** Full transcript at jamesclear.com/great-speeches/creative-thinking-by-claude-shannon. Original in Shannon's *Miscellaneous Writings* at archive.org.
+- **Key frameworks:** Signal vs noise, channel capacity as constraint, simplification through abstraction, creative strategies (analogy, generalization, inversion).
+
+#### Andy Grove
+- **Intel speech archive:** intel.com/pressroom/archive/speeches/ag080998.htm
+- **Stanford Archives (Andrew S. Grove Papers, M1630):** Personal papers, slides, notes at archives.stanford.edu/catalog/m1630. Open for research.
+- **Key frameworks:** Strategic inflection points, "10X forces," OKRs, task-relevant maturity, leverage.
+
+#### Nassim Taleb (Very generous with free material)
+- **"Statistical Consequences of Fat Tails" (Technical Incerto):** Entire book free on arxiv.org/abs/2001.10488 (3rd edition).
+- **~55 academic papers** on arXiv covering antifragility, fat tails, risk management.
+- **Additional papers:** fooledbyrandomness.com/FatTails.html
+- **Key frameworks:** Black Swan theory, antifragility, barbell strategy, skin in the game, via negativa, Lindy effect, ergodicity.
+
+#### Ray Dalio
+- Core principles published free on principles.com before the book, LinkedIn articles, TED/conference talks, Bridgewater "Daily Observations" excerpts.
+
+#### Peter Thiel
+- Stanford CS183 lecture notes (original notes are public, published as "Zero to One"), long-form interviews, debate transcripts.
 
 ### Tier 2 — Books (Paraphrase, Don't Quote)
 
@@ -280,10 +319,22 @@ Key books to study and distill frameworks from:
 
 ### How to Build It Legally
 
-1. **Don't embed book text.** Create your own structured mental model definitions inspired by documented frameworks.
-2. **Public speeches, letters, and papers are fair game.** Embed these directly (with attribution).
-3. **Facts and ideas are not copyrightable.** "Singleton bought back 90% of Teledyne's shares" is a fact. The specific sentences in a biography describing it are copyrighted.
-4. **Your structured framework IS the product.** The value is in how you codify "here's when to apply inversion thinking" — that's your original work.
+**The core legal principle:** Under U.S. copyright law (Section 102(b)), ideas, concepts, systems, methods, and frameworks are NOT copyrightable. Only the specific *expression* is. "Inversion thinking" as a concept can't be owned by Munger. "System 1/System 2" can't be owned by Kahneman. The *sentences* in their books can.
+
+**What you CAN do:**
+1. **Describe frameworks in your own words.** Write your own structured mental model definitions — the JSON format in this plan is exactly right.
+2. **Embed freely published primary sources.** Shareholder letters, Nobel lectures, academic papers, public speeches — these can go directly into your vector store.
+3. **Reference historical decisions.** Facts about what Singleton did at Teledyne are facts, not copyrightable expression.
+4. **Use short quotations with attribution.** Brief quotes for illustration generally fall under fair use in an educational/analytical context.
+5. **Create derivative structured frameworks.** Turning Munger's 25 biases into a structured decision tool is transformative — a new functional product.
+
+**What you should AVOID:**
+1. **Don't embed large passages from copyrighted books** into your vector store. No paragraphs from *Thinking, Fast and Slow*.
+2. **Don't replicate a book's organizational structure.** Don't mirror Kahneman's exact chapter sequence.
+3. **Don't imply endorsement.** You can say "Charlie Munger's Latticework Model" but not suggest Munger is involved with Thinkerton.
+4. **Don't store copyrighted book PDFs** for RAG retrieval.
+
+**The curation layer itself becomes your IP.** Your selection of which models to include, how they're tagged, what problem types they map to, and what anti-patterns you identify — that's YOUR original copyrightable work.
 
 ### Practical Data Pipeline
 
