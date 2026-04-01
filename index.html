@@ -6,722 +6,289 @@
   <title>Thinkerton — Think Like the Greatest Minds</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,500;0,700;1,500&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
   <style>
-    *, *::before, *::after {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
 
     :root {
-      --color-bg: #0a0a0b;
-      --color-surface: #111113;
-      --color-surface-2: #18181b;
-      --color-border: #27272a;
-      --color-text: #fafafa;
-      --color-text-secondary: #a1a1aa;
-      --color-text-muted: #71717a;
-      --color-accent: #c4a35a;
-      --color-accent-soft: rgba(196, 163, 90, 0.12);
-      --color-accent-glow: rgba(196, 163, 90, 0.06);
-      --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-      --font-serif: 'Playfair Display', Georgia, serif;
+      --bg: #ffffff;
+      --bg-soft: #f8f9fa;
+      --text: #1a1a1a;
+      --text-secondary: #6b7280;
+      --text-muted: #9ca3af;
+      --border: #e5e7eb;
+      --accent: #1a1a1a;
+      --accent-hover: #333;
+      --grad-1: #a8c0ff;
+      --grad-2: #c2b6f2;
+      --grad-3: #f0c6a8;
+      --font: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
     }
 
-    html {
-      scroll-behavior: smooth;
-    }
+    html { scroll-behavior: smooth; }
 
     body {
-      font-family: var(--font-sans);
-      background: var(--color-bg);
-      color: var(--color-text);
-      line-height: 1.7;
+      font-family: var(--font);
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
       -webkit-font-smoothing: antialiased;
     }
 
-    .container {
-      max-width: 1120px;
-      margin: 0 auto;
-      padding: 0 2rem;
-    }
+    .container { max-width: 1080px; margin: 0 auto; padding: 0 1.5rem; }
 
-    /* ---- NAV ---- */
+    /* NAV */
     nav {
-      position: fixed;
-      top: 0;
-      left: 0;
-      right: 0;
-      z-index: 100;
-      padding: 1.5rem 0;
-      background: rgba(10, 10, 11, 0.8);
-      backdrop-filter: blur(20px);
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      padding: 1rem 0;
+      background: rgba(255,255,255,0.85);
+      backdrop-filter: blur(16px);
       border-bottom: 1px solid transparent;
       transition: border-color 0.3s;
     }
-
-    nav.scrolled {
-      border-bottom-color: var(--color-border);
-    }
-
-    nav .container {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
+    nav.scrolled { border-bottom-color: var(--border); }
+    nav .container { display: flex; justify-content: space-between; align-items: center; }
 
     .logo {
-      font-family: var(--font-serif);
-      font-size: 1.5rem;
-      font-weight: 700;
-      color: var(--color-text);
-      text-decoration: none;
-      letter-spacing: -0.02em;
+      font-size: 1.35rem; font-weight: 800; color: var(--text);
+      text-decoration: none; letter-spacing: -0.03em;
     }
+    .logo span { color: var(--grad-2); }
 
-    .logo span {
-      color: var(--color-accent);
-    }
-
-    .nav-links {
-      display: flex;
-      gap: 2.5rem;
-      list-style: none;
-      align-items: center;
-    }
-
+    .nav-links { display: flex; gap: 2rem; list-style: none; align-items: center; }
     .nav-links a {
-      color: var(--color-text-secondary);
-      text-decoration: none;
-      font-size: 0.875rem;
-      font-weight: 400;
-      transition: color 0.2s;
-      letter-spacing: 0.01em;
+      color: var(--text-secondary); text-decoration: none; font-size: 0.875rem;
+      font-weight: 500; transition: color 0.2s;
     }
-
-    .nav-links a:hover {
-      color: var(--color-text);
-    }
+    .nav-links a:hover { color: var(--text); }
 
     .btn {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.5rem;
-      padding: 0.75rem 1.75rem;
-      border-radius: 8px;
-      font-size: 0.875rem;
-      font-weight: 500;
-      text-decoration: none;
-      transition: all 0.2s ease;
-      cursor: pointer;
-      border: none;
-      letter-spacing: 0.01em;
+      display: inline-flex; align-items: center; justify-content: center;
+      padding: 0.7rem 1.5rem; border-radius: 100px; font-size: 0.875rem;
+      font-weight: 600; text-decoration: none; cursor: pointer; border: none;
+      transition: all 0.2s; font-family: var(--font);
     }
-
-    .btn-primary {
-      background: var(--color-accent);
-      color: var(--color-bg);
+    .btn-dark {
+      background: var(--accent); color: #fff;
     }
-
-    .btn-primary:hover {
-      background: #d4b36a;
-      transform: translateY(-1px);
-      box-shadow: 0 4px 24px rgba(196, 163, 90, 0.25);
+    .btn-dark:hover { background: var(--accent-hover); transform: translateY(-1px); box-shadow: 0 4px 16px rgba(0,0,0,0.12); }
+    .btn-outline {
+      background: transparent; color: var(--text); border: 1px solid var(--border);
     }
+    .btn-outline:hover { border-color: var(--text-muted); background: var(--bg-soft); }
+    .btn-lg { padding: 0.9rem 2rem; font-size: 1rem; }
 
-    .btn-secondary {
-      background: transparent;
-      color: var(--color-text);
-      border: 1px solid var(--color-border);
-    }
-
-    .btn-secondary:hover {
-      border-color: var(--color-text-muted);
-      background: var(--color-surface);
-    }
-
-    /* ---- HERO ---- */
+    /* HERO */
     .hero {
-      padding: 12rem 0 8rem;
-      text-align: center;
-      position: relative;
+      padding: 10rem 0 5rem; text-align: center;
     }
-
-    .hero::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 50%;
-      transform: translateX(-50%);
-      width: 600px;
-      height: 600px;
-      background: radial-gradient(circle, var(--color-accent-glow) 0%, transparent 70%);
-      pointer-events: none;
-    }
-
     .hero h1 {
-      font-family: var(--font-serif);
-      font-size: clamp(2.5rem, 6vw, 4.5rem);
-      font-weight: 700;
-      line-height: 1.15;
-      letter-spacing: -0.03em;
-      margin-bottom: 2rem;
-      max-width: 800px;
-      margin-left: auto;
-      margin-right: auto;
+      font-size: clamp(2.5rem, 6vw, 4.25rem); font-weight: 900;
+      line-height: 1.1; letter-spacing: -0.04em; margin-bottom: 1.5rem;
+      max-width: 780px; margin-left: auto; margin-right: auto;
     }
-
-    .hero h1 em {
-      color: var(--color-accent);
-      font-style: italic;
-    }
-
     .hero p {
-      font-size: 1.2rem;
-      color: var(--color-text-secondary);
-      max-width: 580px;
-      margin: 0 auto 3.5rem;
-      line-height: 1.8;
-      font-weight: 300;
+      font-size: 1.15rem; color: var(--text-secondary); max-width: 540px;
+      margin: 0 auto 2.5rem; line-height: 1.7; font-weight: 400;
+    }
+    .hero-ctas { display: flex; gap: 0.75rem; justify-content: center; flex-wrap: wrap; }
+
+    /* HERO VISUAL */
+    .hero-visual {
+      max-width: 800px; margin: 4rem auto 0; border-radius: 24px; overflow: hidden;
+      background: linear-gradient(135deg, var(--grad-1), var(--grad-2), var(--grad-3));
+      padding: 3rem 2rem 0; position: relative;
+    }
+    .hero-visual video {
+      width: 90%; display: block; margin: 0 auto; border-radius: 12px 12px 0 0;
+      box-shadow: 0 -4px 40px rgba(0,0,0,0.1);
     }
 
-    .hero-ctas {
-      display: flex;
-      gap: 1rem;
-      justify-content: center;
-      flex-wrap: wrap;
-    }
-
-    /* ---- THINKERS STRIP ---- */
-    .thinkers {
-      padding: 5rem 0;
-      border-top: 1px solid var(--color-border);
-      border-bottom: 1px solid var(--color-border);
-    }
-
+    /* THINKERS */
+    .thinkers { padding: 4rem 0; border-bottom: 1px solid var(--border); }
     .thinkers-label {
-      text-align: center;
-      font-size: 0.75rem;
-      color: var(--color-text-muted);
-      text-transform: uppercase;
-      letter-spacing: 0.15em;
-      margin-bottom: 2.5rem;
-      font-weight: 500;
+      text-align: center; font-size: 0.7rem; color: var(--text-muted);
+      text-transform: uppercase; letter-spacing: 0.18em; font-weight: 600; margin-bottom: 1.5rem;
     }
-
-    .thinkers-grid {
-      display: flex;
-      justify-content: center;
-      gap: 4rem;
-      flex-wrap: wrap;
-    }
-
+    .thinkers-grid { display: flex; justify-content: center; gap: 2.5rem; flex-wrap: wrap; }
     .thinker-name {
-      font-family: var(--font-serif);
-      font-size: 1.1rem;
-      color: var(--color-text-secondary);
-      font-weight: 500;
-      transition: color 0.2s;
+      font-size: 0.95rem; color: var(--text-muted); font-weight: 500;
+      white-space: nowrap; transition: color 0.2s;
+    }
+    .thinker-name:hover { color: var(--text); }
+
+    /* FEATURE SECTIONS — Instantly style: centered title + desc + CTA + gradient visual */
+    .feature {
+      padding: 7rem 0; text-align: center;
+    }
+    .feature h2 {
+      font-size: clamp(1.75rem, 4vw, 2.75rem); font-weight: 800;
+      letter-spacing: -0.03em; margin-bottom: 1rem; line-height: 1.15;
+    }
+    .feature p.desc {
+      font-size: 1.05rem; color: var(--text-secondary); max-width: 520px;
+      margin: 0 auto 2rem; line-height: 1.7; font-weight: 400;
+    }
+    .feature .btn { margin-bottom: 3rem; }
+
+    /* Gradient card visual */
+    .glass-card {
+      max-width: 700px; margin: 0 auto; border-radius: 24px; overflow: hidden;
+      background: linear-gradient(135deg, var(--grad-1), var(--grad-2), var(--grad-3));
+      padding: 2.5rem 2rem;
+    }
+    .glass-inner {
+      background: rgba(255,255,255,0.7); backdrop-filter: blur(20px);
+      border-radius: 16px; padding: 2rem; text-align: left;
+      box-shadow: 0 4px 30px rgba(0,0,0,0.06);
+    }
+    .glass-inner h4 {
+      font-size: 0.95rem; font-weight: 700; margin-bottom: 1rem; color: var(--text);
+    }
+
+    /* Reasoning mock inside glass card */
+    .mock-row {
+      display: flex; align-items: center; gap: 0.75rem;
+      padding: 0.75rem 1rem; background: rgba(255,255,255,0.8);
+      border-radius: 10px; margin-bottom: 0.5rem;
+    }
+    .mock-avatar {
+      width: 36px; height: 36px; border-radius: 50%;
+      background: linear-gradient(135deg, var(--grad-2), var(--grad-1));
+      flex-shrink: 0; display: flex; align-items: center; justify-content: center;
+      font-size: 0.7rem; font-weight: 700; color: #fff;
+    }
+    .mock-row-text { flex: 1; }
+    .mock-row-text strong { font-size: 0.85rem; font-weight: 600; display: block; }
+    .mock-row-text span { font-size: 0.75rem; color: var(--text-secondary); }
+    .mock-tag {
+      font-size: 0.65rem; font-weight: 600; padding: 0.25rem 0.6rem;
+      border-radius: 100px; background: #d1fae5; color: #065f46;
       white-space: nowrap;
     }
 
-    .thinker-name:hover {
-      color: var(--color-accent);
+    /* Model label row */
+    .mock-label {
+      font-size: 0.6rem; font-weight: 600; text-transform: uppercase;
+      letter-spacing: 0.12em; color: var(--text-muted); margin: 1rem 0 0.375rem;
+    }
+    .mock-model {
+      font-size: 0.95rem; font-weight: 700; color: var(--text); margin-bottom: 0.5rem;
+    }
+    .mock-reasoning {
+      font-size: 0.8rem; color: var(--text-secondary); line-height: 1.65;
     }
 
-    /* ---- HOW IT WORKS ---- */
-    .how-it-works {
-      padding: 8rem 0;
+    /* PRICING */
+    .pricing { padding: 7rem 0; background: var(--bg-soft); }
+    .pricing h2 {
+      text-align: center; font-size: clamp(1.75rem, 4vw, 2.75rem); font-weight: 800;
+      letter-spacing: -0.03em; margin-bottom: 0.75rem;
     }
-
-    .section-label {
-      font-size: 0.75rem;
-      color: var(--color-accent);
-      text-transform: uppercase;
-      letter-spacing: 0.15em;
-      font-weight: 600;
-      margin-bottom: 1.25rem;
+    .pricing > .container > p {
+      text-align: center; font-size: 1.05rem; color: var(--text-secondary);
+      max-width: 480px; margin: 0 auto 3.5rem; line-height: 1.7;
     }
-
-    .section-title {
-      font-family: var(--font-serif);
-      font-size: clamp(2rem, 4vw, 3rem);
-      font-weight: 700;
-      letter-spacing: -0.02em;
-      margin-bottom: 1.5rem;
-      line-height: 1.2;
-    }
-
-    .section-subtitle {
-      font-size: 1.1rem;
-      color: var(--color-text-secondary);
-      max-width: 560px;
-      line-height: 1.8;
-      font-weight: 300;
-      margin-bottom: 5rem;
-    }
-
-    .steps {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 2.5rem;
-    }
-
-    .step {
-      padding: 2.5rem;
-      background: var(--color-surface);
-      border: 1px solid var(--color-border);
-      border-radius: 16px;
-      transition: border-color 0.3s, transform 0.3s;
-    }
-
-    .step:hover {
-      border-color: rgba(196, 163, 90, 0.3);
-      transform: translateY(-2px);
-    }
-
-    .step-number {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      width: 40px;
-      height: 40px;
-      border-radius: 10px;
-      background: var(--color-accent-soft);
-      color: var(--color-accent);
-      font-weight: 600;
-      font-size: 0.875rem;
-      margin-bottom: 1.75rem;
-    }
-
-    .step h3 {
-      font-size: 1.15rem;
-      font-weight: 600;
-      margin-bottom: 0.875rem;
-      letter-spacing: -0.01em;
-    }
-
-    .step p {
-      font-size: 0.95rem;
-      color: var(--color-text-secondary);
-      line-height: 1.7;
-      font-weight: 300;
-    }
-
-    /* ---- MODES ---- */
-    .modes {
-      padding: 8rem 0;
-    }
-
-    .modes-grid {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 2rem;
-      margin-top: 5rem;
-    }
-
-    .mode-card {
-      padding: 3rem;
-      background: var(--color-surface);
-      border: 1px solid var(--color-border);
-      border-radius: 16px;
-      transition: border-color 0.3s, transform 0.3s;
-    }
-
-    .mode-card:hover {
-      border-color: rgba(196, 163, 90, 0.3);
-      transform: translateY(-2px);
-    }
-
-    .mode-icon {
-      font-size: 1.75rem;
-      margin-bottom: 1.5rem;
-      display: block;
-    }
-
-    .mode-card h3 {
-      font-family: var(--font-serif);
-      font-size: 1.4rem;
-      font-weight: 700;
-      margin-bottom: 1rem;
-      letter-spacing: -0.01em;
-    }
-
-    .mode-card p {
-      font-size: 0.95rem;
-      color: var(--color-text-secondary);
-      line-height: 1.8;
-      font-weight: 300;
-    }
-
-    /* ---- DEMO ---- */
-    .demo {
-      padding: 8rem 0;
-    }
-
-    .demo-container {
-      max-width: 720px;
-      margin: 3rem auto 0;
-      position: relative;
-    }
-
-    .demo-window {
-      background: var(--color-surface);
-      border: 1px solid var(--color-border);
-      border-radius: 16px;
-      overflow: hidden;
-    }
-
-    .demo-toolbar {
-      padding: 1rem 1.5rem;
-      border-bottom: 1px solid var(--color-border);
-      display: flex;
-      align-items: center;
-      gap: 0.5rem;
-    }
-
-    .demo-dot {
-      width: 10px;
-      height: 10px;
-      border-radius: 50%;
-      background: var(--color-border);
-    }
-
-    #play-btn {
-      transition: opacity 0.3s, transform 0.2s, box-shadow 0.2s;
-    }
-
-    #play-btn:hover {
-      transform: translate(-50%, -50%) scale(1.08);
-      box-shadow: 0 6px 40px rgba(196,163,90,0.4);
-    }
-
-    #demo-video {
-      cursor: pointer;
-    }
-
-    /* ---- PRICING ---- */
-    .pricing {
-      padding: 8rem 0;
-    }
-
     .pricing-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 2rem;
-      margin-top: 4rem;
-      align-items: start;
+      display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; align-items: start;
     }
-
     .pricing-card {
-      padding: 3rem 2.5rem;
-      background: var(--color-surface);
-      border: 1px solid var(--color-border);
-      border-radius: 16px;
-      position: relative;
-      transition: border-color 0.3s, transform 0.3s;
+      padding: 2.5rem 2rem; background: #fff; border: 1px solid var(--border);
+      border-radius: 20px; position: relative; transition: transform 0.2s, box-shadow 0.2s;
     }
-
-    .pricing-card:hover {
-      transform: translateY(-2px);
-    }
-
-    .pricing-card.featured {
-      border-color: var(--color-accent);
-      box-shadow: 0 0 60px rgba(196, 163, 90, 0.08);
-    }
-
+    .pricing-card:hover { transform: translateY(-3px); box-shadow: 0 12px 40px rgba(0,0,0,0.06); }
+    .pricing-card.featured { border-color: var(--text); box-shadow: 0 0 0 1px var(--text); }
     .pricing-badge {
-      position: absolute;
-      top: -12px;
-      left: 50%;
-      transform: translateX(-50%);
-      padding: 0.375rem 1rem;
-      background: var(--color-accent);
-      color: var(--color-bg);
-      font-size: 0.7rem;
-      font-weight: 600;
-      border-radius: 100px;
-      text-transform: uppercase;
-      letter-spacing: 0.08em;
-      white-space: nowrap;
+      position: absolute; top: -11px; left: 50%; transform: translateX(-50%);
+      padding: 0.3rem 0.9rem; background: var(--text); color: #fff;
+      font-size: 0.65rem; font-weight: 700; border-radius: 100px;
+      text-transform: uppercase; letter-spacing: 0.08em; white-space: nowrap;
     }
-
-    .pricing-tier {
-      font-family: var(--font-serif);
-      font-size: 1.25rem;
-      font-weight: 700;
-      margin-bottom: 1rem;
-    }
-
+    .pricing-tier { font-size: 1.1rem; font-weight: 700; margin-bottom: 0.75rem; }
     .pricing-price {
-      font-size: 3rem;
-      font-weight: 700;
-      letter-spacing: -0.03em;
-      line-height: 1;
-      margin-bottom: 0.25rem;
+      font-size: 2.75rem; font-weight: 800; letter-spacing: -0.03em; line-height: 1; margin-bottom: 0.25rem;
     }
-
-    .pricing-price span {
-      font-size: 1rem;
-      font-weight: 400;
-      color: var(--color-text-muted);
-    }
-
-    .pricing-annual {
-      font-size: 0.8rem;
-      color: var(--color-text-muted);
-      margin-bottom: 2rem;
-    }
-
-    .pricing-features {
-      list-style: none;
-      margin-bottom: 2.5rem;
-    }
-
+    .pricing-price span { font-size: 0.9rem; font-weight: 400; color: var(--text-muted); }
+    .pricing-annual { font-size: 0.75rem; color: var(--text-muted); margin-bottom: 1.5rem; }
+    .pricing-features { list-style: none; margin-bottom: 2rem; }
     .pricing-features li {
-      font-size: 0.9rem;
-      color: var(--color-text-secondary);
-      padding: 0.5rem 0;
-      border-bottom: 1px solid var(--color-border);
-      font-weight: 300;
+      font-size: 0.85rem; color: var(--text-secondary); padding: 0.45rem 0;
+      border-bottom: 1px solid #f3f4f6; font-weight: 400;
     }
-
-    .pricing-features li:last-child {
-      border-bottom: none;
+    .pricing-features li:last-child { border-bottom: none; }
+    .pricing-anchor {
+      text-align: center; margin-top: 2.5rem; font-size: 0.85rem; color: var(--text-muted);
     }
+    .pricing-anchor strong { color: var(--text); font-weight: 600; }
 
-    @media (max-width: 768px) {
-      .pricing-grid {
-        grid-template-columns: 1fr;
-        max-width: 400px;
-        margin-left: auto;
-        margin-right: auto;
-      }
+    /* CTA */
+    .cta-section { padding: 7rem 0; text-align: center; }
+    .cta-section h2 {
+      font-size: clamp(1.75rem, 4vw, 2.75rem); font-weight: 800;
+      letter-spacing: -0.03em; margin-bottom: 0.75rem;
     }
-
-    /* ---- CTA SECTION ---- */
-    .cta-section {
-      padding: 8rem 0;
-      text-align: center;
+    .cta-section p {
+      font-size: 1.05rem; color: var(--text-secondary); margin-bottom: 2rem;
     }
-
-    .cta-box {
-      padding: 5rem 3rem;
-      background: var(--color-surface);
-      border: 1px solid var(--color-border);
-      border-radius: 24px;
-      position: relative;
-      overflow: hidden;
-    }
-
-    .cta-box::before {
-      content: '';
-      position: absolute;
-      top: -100px;
-      left: 50%;
-      transform: translateX(-50%);
-      width: 400px;
-      height: 400px;
-      background: radial-gradient(circle, var(--color-accent-glow) 0%, transparent 70%);
-      pointer-events: none;
-    }
-
-    .cta-box h2 {
-      font-family: var(--font-serif);
-      font-size: clamp(2rem, 4vw, 2.75rem);
-      font-weight: 700;
-      margin-bottom: 1.25rem;
-      letter-spacing: -0.02em;
-      position: relative;
-    }
-
-    .cta-box p {
-      font-size: 1.1rem;
-      color: var(--color-text-secondary);
-      margin-bottom: 2.5rem;
-      font-weight: 300;
-      position: relative;
-    }
-
-    .cta-box .btn {
-      position: relative;
-    }
-
     .email-form {
-      display: flex;
-      gap: 0.75rem;
-      max-width: 440px;
-      margin: 0 auto;
-      position: relative;
+      display: flex; gap: 0.5rem; max-width: 400px; margin: 0 auto;
     }
-
     .email-form input {
-      flex: 1;
-      padding: 0.875rem 1.25rem;
-      background: var(--color-surface-2);
-      border: 1px solid var(--color-border);
-      border-radius: 8px;
-      color: var(--color-text);
-      font-size: 0.9rem;
-      font-family: var(--font-sans);
-      outline: none;
-      transition: border-color 0.2s;
+      flex: 1; padding: 0.8rem 1rem; background: var(--bg-soft);
+      border: 1px solid var(--border); border-radius: 100px;
+      font-size: 0.875rem; font-family: var(--font); outline: none;
+      color: var(--text); transition: border-color 0.2s;
     }
+    .email-form input:focus { border-color: var(--text); }
+    .email-form input::placeholder { color: var(--text-muted); }
 
-    .email-form input::placeholder {
-      color: var(--color-text-muted);
-    }
+    /* FOOTER */
+    footer { padding: 2.5rem 0; border-top: 1px solid var(--border); }
+    footer .container { display: flex; justify-content: space-between; align-items: center; }
+    .footer-text { font-size: 0.75rem; color: var(--text-muted); }
+    .footer-links { display: flex; gap: 1.5rem; list-style: none; }
+    .footer-links a { font-size: 0.75rem; color: var(--text-muted); text-decoration: none; transition: color 0.2s; }
+    .footer-links a:hover { color: var(--text); }
 
-    .email-form input:focus {
-      border-color: var(--color-accent);
-    }
-
-    /* ---- FOOTER ---- */
-    footer {
-      padding: 3rem 0;
-      border-top: 1px solid var(--color-border);
-    }
-
-    footer .container {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
-
-    .footer-text {
-      font-size: 0.8rem;
-      color: var(--color-text-muted);
-    }
-
-    .footer-links {
-      display: flex;
-      gap: 2rem;
-      list-style: none;
-    }
-
-    .footer-links a {
-      font-size: 0.8rem;
-      color: var(--color-text-muted);
-      text-decoration: none;
-      transition: color 0.2s;
-    }
-
-    .footer-links a:hover {
-      color: var(--color-text-secondary);
-    }
-
-    /* ---- HAMBURGER ---- */
+    /* HAMBURGER */
     .hamburger {
-      display: none;
-      flex-direction: column;
-      gap: 5px;
-      background: none;
-      border: none;
-      cursor: pointer;
-      padding: 8px;
-      z-index: 200;
+      display: none; flex-direction: column; gap: 5px;
+      background: none; border: none; cursor: pointer; padding: 8px; z-index: 200;
     }
-
     .hamburger span {
-      display: block;
-      width: 24px;
-      height: 2px;
-      background: var(--color-text);
-      border-radius: 2px;
-      transition: transform 0.3s, opacity 0.3s;
+      display: block; width: 22px; height: 2px; background: var(--text);
+      border-radius: 2px; transition: transform 0.3s, opacity 0.3s;
     }
+    .hamburger.active span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+    .hamburger.active span:nth-child(2) { opacity: 0; }
+    .hamburger.active span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
 
-    .hamburger.active span:nth-child(1) {
-      transform: translateY(7px) rotate(45deg);
-    }
-
-    .hamburger.active span:nth-child(2) {
-      opacity: 0;
-    }
-
-    .hamburger.active span:nth-child(3) {
-      transform: translateY(-7px) rotate(-45deg);
-    }
-
-    /* ---- RESPONSIVE ---- */
+    /* RESPONSIVE */
     @media (max-width: 768px) {
-      .hamburger {
-        display: flex;
-      }
-
+      .hamburger { display: flex; }
       .nav-links {
-        display: none;
-        position: fixed;
-        top: 0;
-        left: 0;
-        right: 0;
-        bottom: 0;
-        background: rgba(10, 10, 11, 0.97);
-        backdrop-filter: blur(20px);
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        gap: 2.5rem;
-        z-index: 150;
+        display: none; position: fixed; top: 0; left: 0; right: 0; bottom: 0;
+        background: rgba(255,255,255,0.97); backdrop-filter: blur(20px);
+        flex-direction: column; justify-content: center; align-items: center;
+        gap: 2rem; z-index: 150;
       }
-
-      .nav-links.open {
-        display: flex;
-      }
-
-      .nav-links a {
-        font-size: 1.25rem;
-      }
-
-      .hero {
-        padding: 9rem 0 5rem;
-      }
-
-      .steps {
-        grid-template-columns: 1fr;
-      }
-
-      .modes-grid {
-        grid-template-columns: 1fr;
-      }
-
-      .thinkers-grid {
-        gap: 2rem;
-      }
-
-      .email-form {
-        flex-direction: column;
-      }
-
-      footer .container {
-        flex-direction: column;
-        gap: 1.5rem;
-        text-align: center;
-      }
+      .nav-links.open { display: flex; }
+      .nav-links a { font-size: 1.15rem; }
+      .hero { padding: 8rem 0 3rem; }
+      .pricing-grid { grid-template-columns: 1fr; max-width: 380px; margin-left: auto; margin-right: auto; }
+      .thinkers-grid { gap: 1.5rem; }
+      .email-form { flex-direction: column; }
+      footer .container { flex-direction: column; gap: 1rem; text-align: center; }
+      .hero-visual { margin-left: 1rem; margin-right: 1rem; }
+      .glass-card { margin-left: 1rem; margin-right: 1rem; }
     }
 
-    /* ---- ANIMATIONS ---- */
-    @keyframes fadeUp {
-      from {
-        opacity: 0;
-        transform: translateY(20px);
-      }
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
+    /* ANIMATIONS */
+    .reveal {
+      opacity: 0; transform: translateY(24px);
+      transition: opacity 0.7s ease, transform 0.7s ease;
     }
-
-    .fade-up {
-      opacity: 0;
-      animation: fadeUp 0.8s ease forwards;
-    }
-
-    .fade-up:nth-child(2) { animation-delay: 0.1s; }
-    .fade-up:nth-child(3) { animation-delay: 0.2s; }
-    .fade-up:nth-child(4) { animation-delay: 0.3s; }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
   </style>
 </head>
 <body>
@@ -733,14 +300,11 @@
       <ul class="nav-links" id="nav-menu">
         <li><a href="#how">How It Works</a></li>
         <li><a href="#modes">Modes</a></li>
-        <li><a href="#demo">Demo</a></li>
         <li><a href="#pricing">Pricing</a></li>
-        <li><a href="#waitlist" class="btn btn-primary">Join Waitlist</a></li>
+        <li><a href="#waitlist" class="btn btn-dark">Get Started</a></li>
       </ul>
       <button class="hamburger" id="hamburger" aria-label="Toggle menu">
-        <span></span>
-        <span></span>
-        <span></span>
+        <span></span><span></span><span></span>
       </button>
     </div>
   </nav>
@@ -748,12 +312,15 @@
   <!-- HERO -->
   <section class="hero">
     <div class="container">
-      <h1 class="fade-up">Curated reasoning from history's <em>sharpest minds.</em></h1>
-      <p class="fade-up">Feed Thinkerton a problem and get it analyzed through the mental models of Munger, Singleton, Kahneman, and other elite thinkers — not generic AI, but the actual decision frameworks of the greatest thinkers who ever lived.</p>
-      <div class="hero-ctas fade-up">
-        <a href="#waitlist" class="btn btn-primary">Get Early Access</a>
-        <a href="#how" class="btn btn-secondary">See How It Works</a>
+      <h1 class="reveal">Think Like the Greatest Minds Who Ever Lived</h1>
+      <p class="reveal">Feed Thinkerton any decision and get it analyzed through the mental models of Munger, Buffett, Kahneman, and more. Not generic AI. Curated reasoning from history's sharpest thinkers.</p>
+      <div class="hero-ctas reveal">
+        <a href="#waitlist" class="btn btn-dark btn-lg">Get Early Access</a>
+        <a href="#how" class="btn btn-outline btn-lg">See How It Works</a>
       </div>
+    </div>
+    <div class="hero-visual reveal">
+      <video id="demo-video" src="demo.mp4" muted playsinline loop style="cursor:pointer;"></video>
     </div>
   </section>
 
@@ -772,99 +339,143 @@
     </div>
   </section>
 
-  <!-- HOW IT WORKS -->
-  <section class="how-it-works" id="how">
+  <!-- FEATURE 1: Describe Your Problem -->
+  <section class="feature" id="how">
     <div class="container">
-      <p class="section-label">How It Works</p>
-      <h2 class="section-title">Elite thinking, applied to your problems.</h2>
-      <p class="section-subtitle">Thinkerton doesn't give you average answers. It applies the documented decision frameworks of history's most exceptional thinkers to your specific situation.</p>
-      <div class="steps">
-        <div class="step">
-          <div class="step-number">01</div>
-          <h3>Describe your problem</h3>
-          <p>Enter a business decision, strategic question, or complex problem you're wrestling with. The more context, the sharper the analysis.</p>
-        </div>
-        <div class="step">
-          <div class="step-number">02</div>
-          <h3>Choose your lenses</h3>
-          <p>Select which thinkers' frameworks to apply — or let Thinkerton automatically match the most relevant mental models to your problem.</p>
-        </div>
-        <div class="step">
-          <div class="step-number">03</div>
-          <h3>Get structured reasoning</h3>
-          <p>Receive a full analysis showing the mental model applied, the chain of logic, historical precedents, and a clear conclusion with confidence level.</p>
+      <h2 class="reveal">Describe Any Decision</h2>
+      <p class="desc reveal">Capital allocation, hiring, product strategy, acquisitions — describe what you're wrestling with and Thinkerton matches the right mental models automatically.</p>
+      <a href="#waitlist" class="btn btn-dark reveal">Start For Free</a>
+      <div class="glass-card reveal">
+        <div class="glass-inner">
+          <h4>Your Problem</h4>
+          <p style="font-size:0.9rem; color:var(--text); line-height:1.7; margin:0;">
+            "We have $2M in free cash flow. Should we reinvest in product development, acquire a smaller competitor, or return capital to shareholders?"
+          </p>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- MODES -->
-  <section class="modes" id="modes">
+  <!-- FEATURE 2: Choose Your Lens -->
+  <section class="feature" style="background:var(--bg-soft);">
     <div class="container">
-      <p class="section-label">Thinking Modes</p>
-      <h2 class="section-title">Multiple ways to sharpen your thinking.</h2>
-      <p class="section-subtitle">Choose how you want Thinkerton to reason through your problem.</p>
-      <div class="modes-grid">
-        <div class="mode-card">
-          <span class="mode-icon">&#9670;</span>
-          <h3>"Think Like" Mode</h3>
-          <p>Describe a decision and see it analyzed through the specific lens of a chosen thinker — Singleton's capital allocation logic, Munger's inversion thinking, Kahneman's bias-correction framework. Compare perspectives side by side.</p>
-        </div>
-        <div class="mode-card">
-          <span class="mode-icon">&#9671;</span>
-          <h3>Decision Journal</h3>
-          <p>Log your decisions over time. Thinkerton maps each one against relevant mental models, flags cognitive biases, and shows where your reasoning diverges from how elite thinkers would approach the same problem.</p>
-        </div>
-        <div class="mode-card">
-          <span class="mode-icon">&#9674;</span>
-          <h3>Reasoning Chains</h3>
-          <p>Not just "what would Buffett say" — structured outputs showing the mental model being applied, the chain of logic, the historical precedent, and the conclusion. Full transparency into the reasoning.</p>
-        </div>
-        <div class="mode-card">
-          <span class="mode-icon">&#9675;</span>
-          <h3>Adversarial Review</h3>
-          <p>Submit your own analysis and let Thinkerton poke holes in it using the frameworks of history's most rigorous thinkers. Find the blind spots before they become costly mistakes.</p>
+      <h2 class="reveal">Choose Your Lens</h2>
+      <p class="desc reveal">Pick which thinker's framework to apply — or let Thinkerton auto-match. Compare multiple perspectives side by side.</p>
+      <a href="#waitlist" class="btn btn-dark reveal">Start For Free</a>
+      <div class="glass-card reveal">
+        <div class="glass-inner">
+          <h4>Select a Thinker</h4>
+          <div class="mock-row">
+            <div class="mock-avatar">CM</div>
+            <div class="mock-row-text">
+              <strong>Charlie Munger</strong>
+              <span>Inversion, Latticework, Lollapalooza Effects</span>
+            </div>
+            <div class="mock-tag">Popular</div>
+          </div>
+          <div class="mock-row" style="border:2px solid var(--text); background:rgba(255,255,255,0.95);">
+            <div class="mock-avatar" style="background:linear-gradient(135deg,#1a1a1a,#444);">HS</div>
+            <div class="mock-row-text">
+              <strong>Henry Singleton</strong>
+              <span>Capital Allocation, Opportunistic Buybacks</span>
+            </div>
+            <div class="mock-tag" style="background:#dbeafe; color:#1e40af;">Selected</div>
+          </div>
+          <div class="mock-row">
+            <div class="mock-avatar" style="background:linear-gradient(135deg,var(--grad-3),var(--grad-1));">DK</div>
+            <div class="mock-row-text">
+              <strong>Daniel Kahneman</strong>
+              <span>System 1/2, Bias Correction, Prospect Theory</span>
+            </div>
+            <div class="mock-tag">Nobel Laureate</div>
+          </div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- DEMO VIDEO -->
-  <section class="demo" id="demo">
+  <!-- FEATURE 3: Get Structured Reasoning -->
+  <section class="feature" id="modes">
     <div class="container">
-      <p class="section-label" style="text-align:center">Live Preview</p>
-      <h2 class="section-title" style="text-align:center">See the reasoning in action.</h2>
-      <div class="demo-container">
-        <div class="demo-window" style="padding:0; overflow:hidden;">
-          <video
-            id="demo-video"
-            src="demo.mp4"
-            muted
-            playsinline
-            loop
-            style="width:100%; display:block; border-radius:16px;"
-          ></video>
-          <button id="play-btn" aria-label="Play demo video" style="
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            width: 72px;
-            height: 72px;
-            border-radius: 50%;
-            background: rgba(196,163,90,0.9);
-            border: none;
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            transition: transform 0.2s, box-shadow 0.2s;
-            box-shadow: 0 4px 30px rgba(196,163,90,0.3);
-          ">
-            <svg width="24" height="28" viewBox="0 0 24 28" fill="none">
-              <path d="M2 2L22 14L2 26V2Z" fill="#0a0a0b" stroke="#0a0a0b" stroke-width="2" stroke-linejoin="round"/>
-            </svg>
-          </button>
+      <h2 class="reveal">Get Structured Reasoning</h2>
+      <p class="desc reveal">Not a chatbot answer. A full reasoning chain: the mental model applied, the logic, the historical precedent, and a clear conclusion.</p>
+      <a href="#waitlist" class="btn btn-dark reveal">Start For Free</a>
+      <div class="glass-card reveal">
+        <div class="glass-inner">
+          <div style="display:inline-flex; align-items:center; gap:0.375rem; padding:0.3rem 0.7rem; background:#dbeafe; border-radius:6px; font-size:0.7rem; color:#1e40af; font-weight:600; margin-bottom:1rem;">
+            Think Like: Henry Singleton
+          </div>
+          <div class="mock-label">Mental Model</div>
+          <div class="mock-model">Opportunistic Capital Allocation</div>
+          <div class="mock-label" style="margin-top:0.75rem;">Framework</div>
+          <div class="mock-reasoning">Singleton never committed to a fixed allocation strategy. He evaluated each option against the current opportunity cost of capital.</div>
+          <div class="mock-label" style="margin-top:0.75rem;">Applied to Your Situation</div>
+          <div class="mock-reasoning">The critical question isn't "which category" but "which specific opportunity has the highest risk-adjusted return right now?"</div>
+          <div class="mock-label" style="margin-top:0.75rem;">Key Insight</div>
+          <div style="padding:0.75rem 1rem; background:#f0fdf4; border-left:3px solid #22c55e; border-radius:0 8px 8px 0; margin-top:0.25rem;">
+            <div class="mock-reasoning" style="color:#166534; font-weight:500; font-style:italic;">
+              The answer changes based on market conditions. Avoid treating capital allocation as a permanent policy.
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FEATURE 4: Decision Journal -->
+  <section class="feature" style="background:var(--bg-soft);">
+    <div class="container">
+      <h2 class="reveal">Track Every Decision</h2>
+      <p class="desc reveal">Log decisions over time. Thinkerton maps each one against relevant mental models, flags biases, and reveals your reasoning patterns.</p>
+      <a href="#waitlist" class="btn btn-dark reveal">Start For Free</a>
+      <div class="glass-card reveal">
+        <div class="glass-inner">
+          <h4>Decision Journal</h4>
+          <div class="mock-row">
+            <div class="mock-row-text">
+              <strong>Q1 Capital Allocation</strong>
+              <span>Mar 12 — Singleton Framework</span>
+            </div>
+            <div class="mock-tag">Decided: Reinvest</div>
+          </div>
+          <div class="mock-row">
+            <div class="mock-row-text">
+              <strong>Series B Term Sheet Review</strong>
+              <span>Feb 28 — Munger Inversion</span>
+            </div>
+            <div class="mock-tag" style="background:#fef3c7; color:#92400e;">Bias Flagged</div>
+          </div>
+          <div class="mock-row">
+            <div class="mock-row-text">
+              <strong>Product Line Expansion</strong>
+              <span>Feb 3 — Kahneman Pre-mortem</span>
+            </div>
+            <div class="mock-tag">Decided: Hold</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FEATURE 5: Adversarial Review -->
+  <section class="feature">
+    <div class="container">
+      <h2 class="reveal">Stress-Test Your Thinking</h2>
+      <p class="desc reveal">Submit your own analysis. Thinkerton pokes holes in it using the frameworks of history's most rigorous thinkers. Find blind spots before they cost you.</p>
+      <a href="#waitlist" class="btn btn-dark reveal">Start For Free</a>
+      <div class="glass-card reveal" style="background: linear-gradient(135deg, #fecaca, var(--grad-2), var(--grad-1));">
+        <div class="glass-inner">
+          <h4>Adversarial Review</h4>
+          <div class="mock-label">Your Analysis</div>
+          <div class="mock-reasoning" style="margin-bottom:0.75rem;">"We should acquire CompetitorX for $4M — they have 200 customers and strong retention."</div>
+          <div class="mock-label">Munger's Inversion</div>
+          <div style="padding:0.75rem 1rem; background:#fef2f2; border-left:3px solid #ef4444; border-radius:0 8px 8px 0; margin-bottom:0.5rem;">
+            <div class="mock-reasoning" style="color:#991b1b; font-weight:500;">Invert: What would make this acquisition destroy value? You haven't addressed integration risk, key-person dependency, or whether their retention survives an ownership change.</div>
+          </div>
+          <div class="mock-label">Kahneman's Bias Check</div>
+          <div style="padding:0.75rem 1rem; background:#fffbeb; border-left:3px solid #f59e0b; border-radius:0 8px 8px 0;">
+            <div class="mock-reasoning" style="color:#92400e; font-weight:500;">Anchoring detected: You're anchored to their customer count (200) without examining revenue per customer or churn trajectory.</div>
+          </div>
         </div>
       </div>
     </div>
@@ -873,11 +484,10 @@
   <!-- PRICING -->
   <section class="pricing" id="pricing">
     <div class="container">
-      <p class="section-label" style="text-align:center">Pricing</p>
-      <h2 class="section-title" style="text-align:center">Invest in how you think.</h2>
-      <p class="section-subtitle" style="text-align:center; margin-left:auto; margin-right:auto;">The cost of one bad decision dwarfs a year of Thinkerton. Price anchored against executive coaching ($500–1,000/hr), not AI chatbots.</p>
+      <h2 class="reveal">Invest in How You Think</h2>
+      <p class="reveal">One better decision pays for a lifetime of Thinkerton.</p>
       <div class="pricing-grid">
-        <div class="pricing-card">
+        <div class="pricing-card reveal">
           <div class="pricing-tier">Operator</div>
           <div class="pricing-price">$199<span>/mo</span></div>
           <div class="pricing-annual">$1,990/year (save 17%)</div>
@@ -889,24 +499,24 @@
             <li>Personal decision journal</li>
             <li>Export to PDF / Notion</li>
           </ul>
-          <a href="#waitlist" class="btn btn-secondary" style="width:100%; justify-content:center;">Get Early Access</a>
+          <a href="#waitlist" class="btn btn-outline" style="width:100%;">Get Early Access</a>
         </div>
-        <div class="pricing-card featured">
+        <div class="pricing-card featured reveal">
           <div class="pricing-badge">Most Popular</div>
           <div class="pricing-tier">Principal</div>
           <div class="pricing-price">$499<span>/mo</span></div>
           <div class="pricing-annual">$4,990/year (save 17%)</div>
           <ul class="pricing-features">
             <li>Unlimited analyses</li>
-            <li>Multi-lens comparison (side-by-side)</li>
+            <li>Multi-lens comparison</li>
             <li>Adversarial review mode</li>
             <li>Decision pattern tracking</li>
             <li>API access (100 calls/mo)</li>
             <li>Custom thinker profiles</li>
           </ul>
-          <a href="#waitlist" class="btn btn-primary" style="width:100%; justify-content:center;">Get Early Access</a>
+          <a href="#waitlist" class="btn btn-dark" style="width:100%;">Get Early Access</a>
         </div>
-        <div class="pricing-card">
+        <div class="pricing-card reveal">
           <div class="pricing-tier">Partnership</div>
           <div class="pricing-price">$2,500<span>/mo</span></div>
           <div class="pricing-annual">Custom annual agreements</div>
@@ -918,8 +528,11 @@
             <li>Quarterly framework updates</li>
             <li>White-glove support</li>
           </ul>
-          <a href="#waitlist" class="btn btn-secondary" style="width:100%; justify-content:center;">Contact Us</a>
+          <a href="#waitlist" class="btn btn-outline" style="width:100%;">Contact Us</a>
         </div>
+      </div>
+      <div class="pricing-anchor reveal">
+        <strong>For context:</strong> Executive coaching costs $500–1,000/hr. A single bad capital allocation decision costs millions.
       </div>
     </div>
   </section>
@@ -927,14 +540,12 @@
   <!-- CTA -->
   <section class="cta-section" id="waitlist">
     <div class="container">
-      <div class="cta-box">
-        <h2>Stop thinking average.</h2>
-        <p>Join the waitlist to get early access to Thinkerton.</p>
-        <form class="email-form" onsubmit="handleSubmit(event)">
-          <input type="email" placeholder="you@example.com" required>
-          <button type="submit" class="btn btn-primary">Join Waitlist</button>
-        </form>
-      </div>
+      <h2 class="reveal">Stop Thinking Average</h2>
+      <p class="reveal">Join the waitlist and get early access to Thinkerton.</p>
+      <form class="email-form reveal" onsubmit="handleSubmit(event)">
+        <input type="email" placeholder="you@example.com" required>
+        <button type="submit" class="btn btn-dark">Join Waitlist</button>
+      </form>
     </div>
   </section>
 
@@ -951,90 +562,38 @@
   </footer>
 
   <script>
-    // Nav scroll effect
+    // Nav scroll
     const nav = document.getElementById('nav');
-    window.addEventListener('scroll', () => {
-      nav.classList.toggle('scrolled', window.scrollY > 20);
-    });
+    window.addEventListener('scroll', () => nav.classList.toggle('scrolled', window.scrollY > 20));
 
-    // Hamburger menu
+    // Hamburger
     const hamburger = document.getElementById('hamburger');
     const navMenu = document.getElementById('nav-menu');
-    hamburger.addEventListener('click', () => {
-      hamburger.classList.toggle('active');
-      navMenu.classList.toggle('open');
-    });
-    navMenu.querySelectorAll('a').forEach(link => {
-      link.addEventListener('click', () => {
-        hamburger.classList.remove('active');
-        navMenu.classList.remove('open');
-      });
-    });
+    hamburger.addEventListener('click', () => { hamburger.classList.toggle('active'); navMenu.classList.toggle('open'); });
+    navMenu.querySelectorAll('a').forEach(l => l.addEventListener('click', () => { hamburger.classList.remove('active'); navMenu.classList.remove('open'); }));
 
-    // Demo video play/pause
+    // Video auto-play on scroll
     const video = document.getElementById('demo-video');
-    const playBtn = document.getElementById('play-btn');
-
-    // Auto-play when scrolled into view
-    const videoObserver = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          video.play();
-          playBtn.style.opacity = '0';
-          playBtn.style.pointerEvents = 'none';
-        }
-      });
-    }, { threshold: 0.5 });
-    videoObserver.observe(video);
-
-    playBtn.addEventListener('click', () => {
-      video.play();
-      playBtn.style.opacity = '0';
-      playBtn.style.pointerEvents = 'none';
-    });
-
-    video.addEventListener('click', () => {
-      if (video.paused) {
-        video.play();
-        playBtn.style.opacity = '0';
-        playBtn.style.pointerEvents = 'none';
-      } else {
-        video.pause();
-        playBtn.style.opacity = '1';
-        playBtn.style.pointerEvents = 'auto';
-      }
-    });
+    const vObs = new IntersectionObserver(entries => { entries.forEach(e => { if (e.isIntersecting) video.play(); }); }, { threshold: 0.3 });
+    vObs.observe(video);
+    video.addEventListener('click', () => { video.paused ? video.play() : video.pause(); });
 
     // Waitlist form
     function handleSubmit(e) {
       e.preventDefault();
       const input = e.target.querySelector('input');
       const btn = e.target.querySelector('button');
-      btn.textContent = 'You\'re in!';
-      btn.style.background = '#2d8a4e';
+      btn.textContent = "You're in!";
+      btn.style.background = '#22c55e';
       input.value = '';
-      setTimeout(() => {
-        btn.textContent = 'Join Waitlist';
-        btn.style.background = '';
-      }, 3000);
+      setTimeout(() => { btn.textContent = 'Join Waitlist'; btn.style.background = ''; }, 3000);
     }
 
-    // Intersection Observer for fade-in animations
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.style.opacity = '1';
-          entry.target.style.transform = 'translateY(0)';
-        }
-      });
+    // Scroll reveal
+    const revealObs = new IntersectionObserver(entries => {
+      entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
     }, { threshold: 0.1 });
-
-    document.querySelectorAll('.step, .mode-card').forEach(el => {
-      el.style.opacity = '0';
-      el.style.transform = 'translateY(20px)';
-      el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
-      observer.observe(el);
-    });
+    document.querySelectorAll('.reveal').forEach(el => revealObs.observe(el));
   </script>
 
 </body>
